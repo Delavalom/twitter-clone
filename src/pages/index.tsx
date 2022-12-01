@@ -6,7 +6,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
-
+  const { data: session } = useSession();
   return (
     <>
       <Head>
@@ -15,10 +15,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="">
+        <button onClick={() => signIn()}></button>
+        {JSON.stringify(session)}
       </main>
     </>
   );
 };
 
 export default Home;
-
